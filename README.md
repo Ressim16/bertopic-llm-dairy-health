@@ -100,13 +100,15 @@ input/merged_cleaned_auto_dedup.csv
 
 Required columns: `Abstract`, `Title`, `Year`, `Source` (configurable via script arguments).
 
+Or run the deduplication pipeline on the not-curated dataset with all retrieved abstracts.
+
 ### Running the pipeline
 
 Submit individual steps or use the orchestrators:
 
 ```bash
 cd pipeline/
-# Deduplication preprocessing step
+# Deduplication preprocessing step (if not done yet)
 sbatch run_phase0_dedup_pipeline.sh
 
 # Full phase 1 (deduplication → LLM labeling)
