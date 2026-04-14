@@ -68,8 +68,7 @@ export HF_TOKEN="your_token_here"
 ├── pipeline/
 │   ├── 00_01_pairwise_comparison.py / .sh   # Pairwise duplicate detection
 │   ├── 00_02_threshold_selection.py / .sh   # Deduplication threshold
-│   ├── 00_run_deduplication_pipeline.sh     # Orchestrator: steps 00_01 + 00_02
-(pre-deduplication)
+│   ├── 00_run_deduplication_pipeline.sh     # Orchestrator: steps 00_01 + 00_02 (pre-deduplication)
 │   ├── 01_filter.py / .sh                   # Abstract filtering
 │   ├── 02_truncate.py / .sh                 # Truncation to 512 tokens
 │   ├── 03_embed.py / .sh                    # BioBERT embeddings
