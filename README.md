@@ -14,7 +14,6 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [Pipeline Architecture](#pipeline-architecture)
 - [Models](#models)
 - [Requirements](#requirements)
 - [Directory Structure](#directory-structure)
@@ -29,7 +28,7 @@
 
 ## Overview
 
-This pipeline was developed to support a large-scale bibliometric and thematic analysis of the dairy cattle health research literature (~47,000 abstracts, 2000–2025). It is designed to run on SLURM-based HPC clusters with GPU support, and is fully parameterized for reproducibility.
+This pipeline was developed to support a large-scale bibliometric and thematic analysis of the dairy cattle health research literature (~74,000 abstracts, 2000–2025). It is designed to run on SLURM-based HPC clusters with GPU support, and is fully parameterized for reproducibility.
 
 The pipeline covers the full workflow:
 - Semantic deduplication of raw abstract corpora
@@ -40,40 +39,6 @@ The pipeline covers the full workflow:
 - Manual curation interface
 - Model retraining on curated corpus
 - Quantitative evaluation of topic quality
-
----
-
-## Pipeline Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                     PHASE 0 — Deduplication             │
-│  00_01  Pairwise similarity computation (FAISS)         │
-│  00_02  Threshold selection & corpus export             │
-└──────────────────────────┬──────────────────────────────┘
-                           │
-┌──────────────────────────▼──────────────────────────────┐
-│                     PHASE 1 — Topic Discovery           │
-│  01  Abstract filtering                                 │
-│  02  Truncation (512 tokens)                            │
-│  03  S-BioBERT embedding                                │
-│  04  Grid search (UMAP + HDBSCAN hyperparameters)       │
-│  05  BERTopic full run                                  │
-│  06  LLM topic labeling (LLaMA 3.1)                     │
-└──────────────────────────┬──────────────────────────────┘
-                           │
-                    Manual review point 
-              (topic curation in 07_cluster_filtering.py)
-                           │
-┌──────────────────────────▼──────────────────────────────┐
-│                     PHASE 2 — Refinement                │
-│  07  Cluster filtering (keep/remove topics)             │
-│  08  Re-embedding of curated corpus                     │
-│  09  BERTopic retraining on curated corpus              │
-│  10  Final LLM topic labeling & summarization           │
-│  11  Evaluation and run comparison                      │
-└─────────────────────────────────────────────────────────┘
-```
 
 ---
 
@@ -231,7 +196,7 @@ Mandatory configuration before first run:
 
 ## Data Availability
 
-The abstract corpus used in this study is **not provided** in this repository. The ~47,000 abstracts were retrieved from bibliographic databases (PubMed, Web of Science, Scopus) and remain subject to the copyright terms of their respective publishers and journals. Redistribution of this content is not permitted under those terms.
+The abstract corpus used in this study is **not provided** in this repository. The ~74,000 abstracts were retrieved from bibliographic databases (PubMed and Scopus) and remain subject to the copyright terms of their respective publishers and journals. Redistribution of this content is not permitted under those terms.
 
 The pipeline is fully reproducible on any corpus of scientific abstracts that follows the expected input format (see [Usage](#usage)). Researchers wishing to replicate the study should retrieve the abstracts independently using equivalent search queries, which are described in detail in the associated publication.
 
@@ -242,7 +207,7 @@ The pipeline is fully reproducible on any corpus of scientific abstracts that fo
 If you use this pipeline in your research, please cite:
 
 ```bibtex
-@unpublished{ressim2025dairy,
+@unpublished{Reda Zahri BERTOpic—LLM},
   title   = {<Paper title>},
   author  = {<Authors>},
   note    = {<Note>},
