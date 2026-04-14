@@ -1,0 +1,58 @@
+# Data directories — never commit input/output data
+input/
+output/
+
+# Pipeline logs (contain runtime paths and job output)
+pipeline/logs/*.out
+pipeline/logs/*.err
+pipeline/logs/*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+env/
+venv/
+*.env
+
+# Large model/data files
+*.npy
+*.pkl
+*.pkl.gz
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+
+# Data files
+*.csv
+*.tsv
+*.parquet
+*.h5
+*.hdf5
+*.xlsx
+*.json
+*.jsonl
+*.xml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
