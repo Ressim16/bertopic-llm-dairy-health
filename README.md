@@ -1,6 +1,6 @@
 # BERTopic-LLM Pipeline for Dairy Cattle Health Literature
 
-> A reproducible, large-scale NLP pipeline for thematic mapping of veterinary research literature.  
+> A reproducible, large-scale topic modeling pipeline for thematic mapping of veterinary research literature.  
 > Combines S-BioBERT embeddings, BERTopic (UMAP + HDBSCAN), and LLaMA 3.1 for automated topic labeling.
 
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python)
