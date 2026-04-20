@@ -199,6 +199,7 @@ Mandatory configuration before first run:
 The abstract corpus used in this study is **not provided** in this repository. The ~74,000 abstracts were retrieved from bibliographic databases (PubMed and Scopus) and remain subject to the copyright terms of their respective publishers and journals. Redistribution of this content is not permitted under those terms.
 
 The pipeline is designed to be fully reproducible on any corpus of scientific abstracts following the expected input format (see Usage). However, two steps involve non-deterministic or human-dependent components that limit full reproducibility: (1) the manual topic curation step (step 07), in which topic relevance decisions are corpus-specific and cannot be transferred automatically to a new dataset; and (2) LLM-based labeling (steps 06 and 10), where minor hardware differences may produce slight variation in generated outputs despite fixed sampling parameters. Researchers wishing to replicate the study on the original corpus should retrieve the abstracts independently using the search queries described in the associated publication.
+
 ---
 
 ## Citation
