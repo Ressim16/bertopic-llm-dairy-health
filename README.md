@@ -89,7 +89,6 @@ export HF_TOKEN="your_token_here"
 ├── pipeline/
 │   ├── 00_01_pairwise_comparison.py / .sh    # Pairwise duplicate detection (FAISS)
 │   ├── 00_02_threshold_selection.py / .sh    # Deduplication threshold optimization
-│   ├── run_phase0_dedup_pipeline.sh          # Orchestrator: steps 00_01 + 00_02
 │   ├── 01_filter.py / .sh                    # Abstract filtering
 │   ├── 02_truncate.py / .sh                  # Truncation to 512 tokens
 │   ├── 03_embed.py / .sh                     # S-BioBERT embedding generation
@@ -101,6 +100,7 @@ export HF_TOKEN="your_token_here"
 │   ├── 09_train_rerun_model.py / .sh         # BERTopic retraining on curated corpus
 │   ├── 10_label_topics.py / .sh              # Final LLaMA topic labeling
 │   ├── 11_evaluate_runs.py / .sh             # Quantitative run evaluation
+│   ├── run_phase0_dedup_pipeline.sh          # Orchestrator: steps 00_01 + 00_02
 │   ├── run_phase1_pipeline.sh                # Orchestrator: steps 01–06
 │   ├── run_phase2_pipeline.sh                # Orchestrator: steps 08–10
 │   └── logs/                                 # SLURM job logs (gitignored)
@@ -198,8 +198,7 @@ Mandatory configuration before first run:
 
 The abstract corpus used in this study is **not provided** in this repository. The ~74,000 abstracts were retrieved from bibliographic databases (PubMed and Scopus) and remain subject to the copyright terms of their respective publishers and journals. Redistribution of this content is not permitted under those terms.
 
-The pipeline is fully reproducible on any corpus of scientific abstracts that follows the expected input format (see [Usage](#usage)). Researchers wishing to replicate the study should retrieve the abstracts independently using equivalent search queries, which are described in detail in the associated publication.
-
+The pipeline is designed to be fully reproducible on any corpus of scientific abstracts following the expected input format (see Usage). However, two steps involve non-deterministic or human-dependent components that limit full reproducibility: (1) the manual topic curation step (step 07), in which topic relevance decisions are corpus-specific and cannot be transferred automatically to a new dataset; and (2) LLM-based labeling (steps 06 and 10), where minor hardware differences may produce slight variation in generated outputs despite fixed sampling parameters. Researchers wishing to replicate the study on the original corpus should retrieve the abstracts independently using the search queries described in the associated publication.
 ---
 
 ## Citation
